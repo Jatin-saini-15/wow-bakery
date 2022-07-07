@@ -26,7 +26,7 @@
         <a href="about.html">about</a>
         <a href="menu.html">menu</a>
         <a class="active" href="pizza-order.html">order</a>
-        
+
         <a href="review.html">review</a>
         <a href="contact-us.html">contact</a>
     </nav>
@@ -60,7 +60,7 @@
     <h1 class="heading"> free and fast </h1>
 
 
-    <form action="order.php" method="POST">
+    <form action="order.php" method="POST" name="google-sheet">
 
         <div class="inputBox">
             <div class="input">
@@ -165,6 +165,20 @@
 </section>
 
 <!-- footer section ends -->
+
+
+<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyCP5IAiUSQj3zaafy40KqEUhwZIZ6AhLEF8pu3lwjdsLGSQ207P3rRNebEHgzAQlVg/exec'
+            const form = document.forms['google-sheet']
+
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks... ! Your order will reach to you soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+</script>
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
